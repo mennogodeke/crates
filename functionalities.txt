@@ -1,0 +1,29 @@
+# Functionalities
+
+## Users
+* Has login info
+* Has user profile
+* Has crates
+* Has tracklists
+
+
+## Crates
+* Contains albums
+* Contains songs
+* Has genre/types (depending on songs?)
+
+## Albums
+* Has general info
+* Conains songs
+* Has format
+
+## Tracklists
+* Has general info
+* Contains songs
+
+## Songs
+* Has general info
+
+## News
+* Has posts
+
