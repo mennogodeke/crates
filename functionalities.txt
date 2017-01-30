@@ -14,12 +14,17 @@
 
 ## Albums
 * Has general info
-* Conains songs
+* Contains songs
 * Has format
+* Has label
+* Has one artist
 
 ## Tracklists
 * Has general info
-* Contains songs
+* Contains tracks
+
+## Tracks
+* Has general info
 
 ## Songs
 * Has general info
