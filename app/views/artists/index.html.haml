@@ -1,0 +1,30 @@
+%h1
+  Artists
+
+%table.table.table-hover
+  %thead
+    %tr
+      %th
+        Name
+      %th
+        Link
+      %th
+      %th
+      %th
+  %tbody
+    - @artists.each do |artist|
+      %tr
+        %td
+          = artist.name
+        %td
+          = artist.link
+        %td
+          = link_to 'Show', artist_path(artist)
+        %td
+          = link_to 'Edit', edit_artist_path(artist)
+        %td
+          = link_to 'Destroy', artist_path(artist),
+              method: :delete,
+              data: { confirm: 'Are you sure?' }
+
+= link_to 'New artist', new_artist_path
