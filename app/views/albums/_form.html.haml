@@ -1,0 +1,25 @@
+= simple_form_for @album do |f|
+  - if @album.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@album.errors.count, "error")
+        prohibited
+        this album from being saved:
+      %ul
+        - @album.errors.full_messages.each do |msg|
+          %li= msg
+
+  %p
+    = f.label :artist
+    = f.collection_select(:artist_id, Artist.all, :id, :name )
+  %p
+    = f.label :label
+    = f.collection_select(:label_id, Label.all, :id, :name )
+  %p
+    = f.input :title
+  %p
+    = f.input :year
+  %p
+    = f.input :description, :as => :text
+  %p
+    = f.button :submit

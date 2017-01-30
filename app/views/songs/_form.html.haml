@@ -1,0 +1,8 @@
+= form_for([@album, @album.songs.build]) do |f|
+  %p
+    = f.label :title
+    = f.text_field :title
+    = f.label :featuring
+    = f.text_field :featuring
+  %p
+    = f.submit

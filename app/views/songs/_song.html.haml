@@ -1,0 +1,18 @@
+%table.table.table-hover
+  %thead
+    %tr
+      %th
+        Title
+      %th
+        Featuring
+  %tbody
+  - @album.songs.each do |song|
+    %tr
+      %td
+        = song.title
+      %td
+        = song.featuring
+      %td
+        = link_to 'Remove song', [song.album, song],
+               method: :delete,
+               data: { confirm: 'Are you sure?' }

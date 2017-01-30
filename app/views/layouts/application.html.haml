@@ -47,4 +47,13 @@
                   = link_to 'All labels', labels_path
                 %li
                   = link_to 'New label', new_label_path
+            %li.dropdown
+              %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+                My collection
+                %span.caret
+              %ul.dropdown-menu
+                %li
+                  = link_to 'See collection', albums_path
+                %li
+                  = link_to 'New album', new_album_path
     = yield
