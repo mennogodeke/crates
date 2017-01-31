@@ -1,0 +1,4 @@
+= form_for([@crate, @crate.crate_entries.build]) do |f|
+  = f.label :album
+  = f.collection_select :album_id, Album.all, :id, :title
+  = f.submit

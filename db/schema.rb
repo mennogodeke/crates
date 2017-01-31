@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170131130401) do
+ActiveRecord::Schema.define(version: 20170131161320) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,22 @@ ActiveRecord::Schema.define(version: 20170131130401) do
     t.string   "name"
     t.text     "description"
     t.string   "link"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "crate_entries", force: :cascade do |t|
+    t.integer  "album_id"
+    t.integer  "crate_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["album_id"], name: "index_crate_entries_on_album_id", using: :btree
+    t.index ["crate_id"], name: "index_crate_entries_on_crate_id", using: :btree
+  end
+
+  create_table "crates", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
@@ -71,6 +87,8 @@ ActiveRecord::Schema.define(version: 20170131130401) do
 
   add_foreign_key "albums", "artists"
   add_foreign_key "albums", "labels"
+  add_foreign_key "crate_entries", "albums"
+  add_foreign_key "crate_entries", "crates"
   add_foreign_key "format_fields", "formats"
   add_foreign_key "songs", "albums"
 end

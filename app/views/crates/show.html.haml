@@ -1,0 +1,15 @@
+%h1
+  =@crate.name
+%p
+  =@crate.description
+
+%h2 Albums
+
+= render :partial => 'crate_entries/crate_entries'
+
+
+%h2 Add Albums
+
+= render :partial => 'crate_entries/entry_form'
+
+= link_to 'Back', crates_path

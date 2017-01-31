@@ -6,6 +6,7 @@ class Album < ApplicationRecord
   accepts_nested_attributes_for :format
 
   has_many :songs, dependent: :destroy
+  has_many :crate_entries
 
   validates :title, presence: true
   validates :label, presence: true

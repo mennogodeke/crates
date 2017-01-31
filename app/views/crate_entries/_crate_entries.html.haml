@@ -1,0 +1,20 @@
+%table.table.table-hover
+  %thead
+    %tr
+      %th
+        Title
+      %th
+        Artist
+      %th
+        Format
+  %tbody
+    - @crate.crate_entries.each do |entry|
+      %tr
+        %td
+          =entry.album.title
+        %td
+          =entry.album.artist.name
+        %td
+          =entry.album.format.name
+        %td
+          =link_to 'Remove Album', [entry.crate, entry], method: :delete, data: {confirm: 'Are you sure?'}

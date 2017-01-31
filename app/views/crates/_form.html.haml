@@ -1,0 +1,19 @@
+= form_for @crate do |f|
+  - if @crate.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@crate.errors.count, "error")
+        prohibited
+        this crate from being saved:
+      %ul
+        - @crate.errors.full_messages.each do |msg|
+          %li= msg
+
+  %p
+    =f.label :name
+    =f.text_field :name
+  %p
+    =f.label :description
+    =f.text_area :description
+  %p
+    =f.submit

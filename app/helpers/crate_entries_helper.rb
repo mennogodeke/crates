@@ -1,0 +1,2 @@
+module CrateEntriesHelper
+end
