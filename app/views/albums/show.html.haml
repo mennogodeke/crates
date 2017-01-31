@@ -21,6 +21,14 @@
 %p
   = @album.description
 
+
+%p
+  - @album.properties.each do |name, value|
+    %p
+      = name.humanize
+      %strong
+        = value
+
 = link_to 'Edit', edit_album_path(@album)
 
 = link_to 'Back', albums_path

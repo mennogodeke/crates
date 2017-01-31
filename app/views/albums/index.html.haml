@@ -33,4 +33,6 @@
               method: :delete,
               data: { confirm: 'Are you sure?' }
 
-= link_to 'New album', new_album_path
+= form_tag new_album_path, method: :get do
+  = select_tag :format_id, options_from_collection_for_select(Format.all, :id, :name)
+  = submit_tag "New Album", name: nil

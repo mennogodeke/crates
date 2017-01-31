@@ -1,0 +1,7 @@
+%p#notice= notice
+%p
+  %strong Name:
+  = @format.name
+= link_to 'Edit', edit_format_path(@format)
+|
+= link_to 'Back', formats_path

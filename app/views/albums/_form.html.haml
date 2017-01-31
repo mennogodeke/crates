@@ -9,6 +9,13 @@
         - @album.errors.full_messages.each do |msg|
           %li= msg
 
+  = f.hidden_field :format_id
+
+  %p
+    = f.fields_for :properties, OpenStruct.new(@album.properties) do |builder|
+      - @album.format.fields.each do |field|
+        = render "albums/fields/#{field.field_type}", field: field, f: builder
+
   %p
     = f.label :artist
     = f.collection_select(:artist_id, Artist.all, :id, :name )

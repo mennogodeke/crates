@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170130190317) do
+ActiveRecord::Schema.define(version: 20170131130401) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(version: 20170130190317) do
     t.integer  "label_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "format_id"
+    t.text     "properties"
     t.index ["artist_id"], name: "index_albums_on_artist_id", using: :btree
     t.index ["label_id"], name: "index_albums_on_label_id", using: :btree
   end
@@ -33,6 +35,22 @@ ActiveRecord::Schema.define(version: 20170130190317) do
     t.string   "link"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "format_fields", force: :cascade do |t|
+    t.string   "name"
+    t.string   "field_type"
+    t.boolean  "required"
+    t.integer  "format_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["format_id"], name: "index_format_fields_on_format_id", using: :btree
+  end
+
+  create_table "formats", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "labels", force: :cascade do |t|
@@ -53,5 +71,6 @@ ActiveRecord::Schema.define(version: 20170130190317) do
 
   add_foreign_key "albums", "artists"
   add_foreign_key "albums", "labels"
+  add_foreign_key "format_fields", "formats"
   add_foreign_key "songs", "albums"
 end

@@ -8,7 +8,7 @@ class AlbumsController < ApplicationController
   end
 
   def new
-    @album = Album.new
+    @album = Album.new(format_id: params[:format_id])
   end
 
   def edit
@@ -44,6 +44,7 @@ class AlbumsController < ApplicationController
 
   private
   def album_params
-    params.require(:album).permit(:title, :artist_id, :label_id, :description, :year)
+    unknown_property_keys = params[:album][:properties].try(:keys)
+    params.require(:album).permit(:title, :artist_id, :label_id, :description, :year, :format_id, { properties: unknown_property_keys})
   end
 end
