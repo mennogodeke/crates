@@ -20,11 +20,12 @@
           = artist.link
         %td
           = link_to 'Show', artist_path(artist)
-        %td
-          = link_to 'Edit', edit_artist_path(artist)
-        %td
-          = link_to 'Destroy', artist_path(artist),
-              method: :delete,
-              data: { confirm: 'Are you sure?' }
-
-= link_to 'New artist', new_artist_path
+        - if user_signed_in? && current_user.admin_role?
+          %td
+            = link_to 'Edit', edit_artist_path(artist)
+          %td
+            = link_to 'Destroy', artist_path(artist),
+                method: :delete,
+                data: { confirm: 'Are you sure?' }
+- if user_signed_in? && current_user.admin_role?
+  = link_to 'New artist', new_artist_path

@@ -12,8 +12,10 @@
         %td= label.name
         %td= label.description
         %td= link_to 'Show', label
-        %td= link_to 'Edit', edit_label_path(label)
-        %td= link_to 'Destroy', label, method: :delete, data: { confirm: 'Are you sure?' }
+        - if user_signed_in? && current_user.admin_role?
+          %td= link_to 'Edit', edit_label_path(label)
+          %td= link_to 'Destroy', label, method: :delete, data: { confirm: 'Are you sure?' }
 %br
-= link_to 'New Label', new_label_path
+- if user_signed_in? && current_user.admin_role?
+  = link_to 'New Label', new_label_path
 

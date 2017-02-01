@@ -1,7 +1,7 @@
 class AlbumsController < ApplicationController
   load_and_authorize_resource
   def index
-    @albums = Album.all
+    @albums = Album.where('user_id' => current_user.id).all
   end
 
   def show
@@ -9,7 +9,7 @@ class AlbumsController < ApplicationController
   end
 
   def new
-    @album = Album.new(format_id: params[:format_id])
+    @album = current_user.albums.build(format_id: params[:format_id])
   end
 
   def edit
@@ -17,7 +17,7 @@ class AlbumsController < ApplicationController
   end
 
   def create
-    @album = Album.new(album_params)
+    @album = current_user.albums.build(album_params)
 
     if @album.save
       redirect_to @album
@@ -46,6 +46,6 @@ class AlbumsController < ApplicationController
   private
   def album_params
     unknown_property_keys = params[:album][:properties].try(:keys)
-    params.require(:album).permit(:title, :artist_id, :label_id, :description, :year, :format_id, { properties: unknown_property_keys})
+    params.require(:album).permit(:title, :artist_id, :label_id, :user_id, :description, :year, :format_id, { properties: unknown_property_keys})
   end
 end

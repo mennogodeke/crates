@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170201091616) do
+ActiveRecord::Schema.define(version: 20170201101611) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20170201091616) do
     t.datetime "updated_at",  null: false
     t.integer  "format_id"
     t.text     "properties"
+    t.integer  "user_id"
     t.index ["artist_id"], name: "index_albums_on_artist_id", using: :btree
     t.index ["label_id"], name: "index_albums_on_label_id", using: :btree
   end
@@ -51,6 +52,7 @@ ActiveRecord::Schema.define(version: 20170201091616) do
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "user_id"
   end
 
   create_table "format_fields", force: :cascade do |t|

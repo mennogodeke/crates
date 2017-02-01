@@ -10,7 +10,7 @@ class CratesController < ApplicationController
   end
 
   def new
-    @crate = Crate.new
+    @crate = current_user.crates.build
   end
 
   def edit
@@ -18,7 +18,7 @@ class CratesController < ApplicationController
   end
 
   def create
-    @crate = Crate.new(crate_params)
+    @crate = current_user.crates.build(crate_params)
 
     if @crate.save
       redirect_to @crate
@@ -46,6 +46,6 @@ class CratesController < ApplicationController
 
   private
   def crate_params
-    params.require(:crate).permit(:name, :description)
+    params.require(:crate).permit(:name, :description, :user_id)
   end
 end

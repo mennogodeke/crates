@@ -11,7 +11,9 @@ class Ability
         end
         if user.user_role?
           can :manage, [Crate, Album, CrateEntry, Song]
-          can :read, [Artist, Label]
+          can :read, [Artist, Label, Crate, Album, Song]
+        else
+          can :read, [Artist, Label, Crate, Album, Song]
         end
 
 

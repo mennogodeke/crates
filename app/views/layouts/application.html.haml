@@ -33,8 +33,9 @@
           %ul.nav.navbar-nav.navbar-right
             %li
               = link_to 'Home', root_path
-            %li
-              = link_to 'Collection', albums_path
+            - if user_signed_in?
+              %li
+                = link_to 'Collection', albums_path
             %li
               = link_to 'Crates', crates_path
             %li.dropdown
@@ -46,6 +47,11 @@
                   = link_to 'Artists', artists_path
                 %li
                   = link_to 'Labels', labels_path
+            %li.dropdown
+              %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+                Account
+                %span.caret
+              %ul.dropdown-menu
                 - if user_signed_in?
                   %li
                     = link_to('Edit registration', edit_user_registration_path)
@@ -56,6 +62,8 @@
                     = link_to('Register', new_user_registration_path)
                   %li
                     = link_to('Login', new_user_session_path)
+
+
 
               %li
                 = link_to 'Contact', '/pages/contact'

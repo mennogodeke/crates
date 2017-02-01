@@ -12,7 +12,8 @@
         = song.title
       %td
         = song.featuring
-      %td
-        = link_to 'Remove song', [song.album, song],
-               method: :delete,
-               data: { confirm: 'Are you sure?' }
+      - if user_signed_in? && @album.user_id == current_user.id
+        %td
+          = link_to 'Remove song', [song.album, song],
+                 method: :delete,
+                 data: { confirm: 'Are you sure?' }

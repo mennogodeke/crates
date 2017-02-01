@@ -2,6 +2,7 @@ class Album < ApplicationRecord
   belongs_to :artist
   belongs_to :label
   belongs_to :format
+  belongs_to :user
 
   accepts_nested_attributes_for :format
 

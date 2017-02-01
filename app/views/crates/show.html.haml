@@ -7,9 +7,9 @@
 
 = render :partial => 'crate_entries/crate_entries'
 
+- if user_signed_in? && @crate.user_id == current_user.id
+  %h2 Add Albums
 
-%h2 Add Albums
-
-= render :partial => 'crate_entries/entry_form'
+  = render :partial => 'crate_entries/entry_form'
 
 = link_to 'Back', crates_path

@@ -1,5 +1,5 @@
 class ArtistsController < ApplicationController
-  skip_before_action :authenticate_user!, :only => [:index]
+  skip_before_action :authenticate_user!, :only => [:index, :show]
   load_and_authorize_resource
   def index
     @artists = Artist.all
