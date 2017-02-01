@@ -1,5 +1,7 @@
 %h1
   = @artist.name
+.image-responsive
+  = image_tag(@artist.avatar.url(:medium))
 
 %p
   = @artist.description

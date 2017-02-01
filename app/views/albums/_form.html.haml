@@ -23,6 +23,9 @@
     = f.label :label
     = f.collection_select(:label_id, Label.all, :id, :name )
   %p
+    = f.label :cover
+    = f.file_field :cover
+  %p
     = f.input :title
   %p
     = f.input :year

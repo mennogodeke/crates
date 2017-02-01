@@ -46,6 +46,6 @@ class AlbumsController < ApplicationController
   private
   def album_params
     unknown_property_keys = params[:album][:properties].try(:keys)
-    params.require(:album).permit(:title, :artist_id, :label_id, :user_id, :description, :year, :format_id, { properties: unknown_property_keys})
+    params.require(:album).permit(:title, :artist_id, :label_id, :user_id, :cover, :description, :year, :format_id, { properties: unknown_property_keys})
   end
 end

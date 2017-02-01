@@ -2,6 +2,8 @@
 %p
   %strong Name:
   = @label.name
+.image-responsive
+  = image_tag(@label.avatar.url(:medium))
 %p
   %strong Description:
   = @label.description

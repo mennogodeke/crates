@@ -1,5 +1,7 @@
 %h1
   = @album.title
+.img-responsive
+  = image_tag(@album.cover.url(:medium))
 
 %h2
   = @album.artist.name
