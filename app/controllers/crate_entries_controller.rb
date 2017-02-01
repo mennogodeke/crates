@@ -1,4 +1,6 @@
 class CrateEntriesController < ApplicationController
+  skip_before_action :authenticate_user!
+  load_and_authorize_resource
   def create
     @crate = Crate.find(params[:crate_id])
     @crate_entry = @crate.crate_entries.create(crate_entry_params)

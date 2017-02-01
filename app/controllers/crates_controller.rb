@@ -1,4 +1,6 @@
 class CratesController < ApplicationController
+  skip_before_action :authenticate_user!
+  load_and_authorize_resource
   def index
     @crates = Crate.all
   end

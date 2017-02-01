@@ -1,5 +1,6 @@
 class FormatsController < ApplicationController
   before_action :set_format, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
 
   # GET /formats
   # GET /formats.json

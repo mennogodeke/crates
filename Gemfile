@@ -34,11 +34,18 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
+#front end framework
 gem 'bootstrap-sass', '~> 3.3.6'
 gem "awesome_print", require:"ap"
 gem 'haml', '~> 4.0', '>= 4.0.7'
 gem 'simple_form', '~> 3.4'
+gem 'devise'
+gem 'toastr-rails'
+
+gem 'remotipart', github: 'mshibuya/remotipart'
+gem 'rails_admin', '>= 1.0.0.rc'
+
+gem 'cancancan'
 
 
 group :development, :test do

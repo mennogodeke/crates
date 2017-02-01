@@ -1,4 +1,6 @@
 class SongsController < ApplicationController
+  skip_before_action :authenticate_user!
+  load_and_authorize_resource
   def create
     @album = Album.find(params[:album_id])
     @song = @album.songs.create(song_params)
